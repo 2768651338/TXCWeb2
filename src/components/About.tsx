@@ -69,6 +69,23 @@ export default function About() {
         }
       );
 
+      // 关键数据计数动画
+      const stats = [6, 40, 5];
+      stats.forEach((target, i) => {
+        const obj = { v: 0 };
+        gsap.to(obj, {
+          v: target,
+          duration: 1.6,
+          ease: "power2.out",
+          delay: i * 0.15,
+          scrollTrigger: { trigger: "[data-stat-num]", start: "top 85%" },
+          onUpdate: () => {
+            const el = root.current?.querySelector(`[data-stat-num="${i}"]`);
+            if (el) el.textContent = String(Math.round(obj.v));
+          },
+        });
+      });
+
       // 头像 hover 视差
       const onMove = (e: MouseEvent) => {
         if (!portraitRef.current) return;
@@ -194,17 +211,19 @@ export default function About() {
             {/* 关键数据 */}
             <div className="mt-12 grid grid-cols-3 gap-6 pt-8 border-t border-bone-50/10">
               {[
-                { v: "6+", l: "年经验" },
-                { v: "40+", l: "项目交付" },
-                { v: "5", l: "国际奖项" },
+                { v: 6, suffix: "+", l: "年经验" },
+                { v: 40, suffix: "+", l: "项目交付" },
+                { v: 5, suffix: "", l: "国际奖项" },
               ].map((s, i) => (
-                <div key={i} data-about-line className="reveal">
+                <div key={i} data-about-line className="reveal group/stat">
                   <div className="font-display text-3xl lg:text-4xl font-semibold text-acid">
-                    {s.v}
+                    <span data-stat-num={i}>0</span>
+                    <span className="text-acid">{s.suffix}</span>
                   </div>
                   <div className="text-xs font-mono text-ash uppercase tracking-wider mt-1">
                     {s.l}
                   </div>
+                  <div className="mt-2 h-px w-0 group-hover/stat:w-full bg-acid/40 transition-all duration-500" />
                 </div>
               ))}
             </div>

@@ -3,6 +3,7 @@ import { gsap } from "gsap";
 import { ArrowDown, MapPin } from "lucide-react";
 import { profile } from "@/data/profile";
 import { useMagnetic } from "@/hooks/useMagnetic";
+import LiveClock from "@/components/LiveClock";
 
 // 延迟加载 3D 场景,首屏先渲染文字
 const HeroScene = lazy(() => import("@/components/HeroScene"));
@@ -185,8 +186,9 @@ export default function Hero() {
           </span>
           <span className="uppercase tracking-widest">Scroll</span>
         </button>
-        <div className="hidden sm:block text-bone-50/40">
-          {profile.nameEn.toUpperCase()} — {profile.titleEn}
+        <div className="hidden sm:flex items-center gap-3 text-bone-50/40">
+          <span className="w-1 h-1 bg-acid rounded-full animate-pulse" />
+          <LiveClock />
         </div>
         <div className="font-mono">01 / 06</div>
       </div>

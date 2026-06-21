@@ -140,7 +140,14 @@ export default function Navbar() {
       >
         <ul className="flex flex-col items-center justify-center h-full gap-2">
           {navSections.map((s, i) => (
-            <li key={s.id}>
+            <li
+              key={s.id}
+              className={cn(
+                "transition-all duration-500",
+                open ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+              )}
+              style={{ transitionDelay: open ? `${i * 60 + 100}ms` : "0ms" }}
+            >
               <button
                 onClick={() => handleClick(s.id)}
                 className="flex items-center gap-3 py-3 group"

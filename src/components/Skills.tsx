@@ -180,6 +180,19 @@ export default function Skills() {
             scrollTrigger: { trigger: "[data-skills-list]", start: "top 75%" },
           }
         );
+        // 末端光点跟随
+        gsap.fromTo(
+          `[data-skill-dot="${i}"]`,
+          { left: "0%", opacity: 0 },
+          {
+            left: `${skillList[i].level}%`,
+            opacity: 1,
+            duration: 1.4,
+            ease: "power3.out",
+            delay: i * 0.08,
+            scrollTrigger: { trigger: "[data-skills-list]", start: "top 75%" },
+          }
+        );
         gsap.fromTo(
           `[data-skill-num="${i}"]`,
           { textContent: 0 },
@@ -275,11 +288,22 @@ export default function Skills() {
                     </span>
                   </div>
                   <div className="h-px bg-bone-50/10 relative overflow-hidden">
+                    {/* 进度条 */}
                     <div
                       data-skill-bar={i}
                       className="absolute inset-y-0 left-0 bg-acid"
                       style={{ width: "0%" }}
                     />
+                    {/* 末端光点 */}
+                    <div
+                      data-skill-dot={i}
+                      className="absolute top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-acid opacity-0 shadow-[0_0_8px_2px_rgba(212,255,58,0.6)]"
+                      style={{ left: "0%" }}
+                    />
+                    {/* 流光扫过 */}
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="absolute inset-y-0 w-1/3 bg-gradient-to-r from-transparent via-acid/40 to-transparent animate-marquee" />
+                    </div>
                   </div>
                 </div>
               ))}

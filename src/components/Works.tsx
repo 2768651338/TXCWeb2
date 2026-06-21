@@ -66,6 +66,12 @@ function WorkCard({ work, index }: { work: typeof works[number]; index: number }
         />
         {/* 渐变遮罩 */}
         <div className="absolute inset-0 bg-gradient-to-t from-ink-950 via-ink-950/20 to-transparent" />
+        {/* hover 描述遮罩 */}
+        <div className="absolute inset-0 bg-ink-950/80 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center p-6">
+          <p className="text-sm text-bone-50 text-center leading-relaxed translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-sharp">
+            {work.description}
+          </p>
+        </div>
 
         {/* 年份 */}
         <div className="absolute top-4 left-4 text-xs font-mono text-acid">
@@ -85,9 +91,11 @@ function WorkCard({ work, index }: { work: typeof works[number]; index: number }
 
       {/* 文字 */}
       <div className="mt-5 px-1">
-        <h3 className="font-display text-xl lg:text-2xl font-medium text-bone-50 group-hover:text-acid transition-colors duration-300">
-          {work.title}
-        </h3>
+        <div className="flex items-baseline justify-between">
+          <h3 className="font-display text-xl lg:text-2xl font-medium text-bone-50 group-hover:text-acid transition-colors duration-300">
+            {work.title}
+          </h3>
+        </div>
         <p className="mt-2 text-sm text-ash leading-relaxed line-clamp-2">
           {work.description}
         </p>
@@ -95,7 +103,7 @@ function WorkCard({ work, index }: { work: typeof works[number]; index: number }
           {work.tags.map((t) => (
             <span
               key={t}
-              className="px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider text-bone-50/50 border border-bone-50/10"
+              className="px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider text-bone-50/50 border border-bone-50/10 group-hover:border-acid/30 group-hover:text-acid/70 transition-colors duration-300"
             >
               {t}
             </span>
@@ -104,7 +112,7 @@ function WorkCard({ work, index }: { work: typeof works[number]; index: number }
       </div>
 
       {/* 编号 */}
-      <div className="absolute -top-6 -right-2 text-5xl lg:text-7xl font-display font-900 text-bone-50/5 group-hover:text-acid/10 transition-colors duration-500 pointer-events-none">
+      <div className="absolute -top-6 -right-2 text-5xl lg:text-7xl font-display font-black text-bone-50/5 group-hover:text-acid/10 transition-colors duration-500 pointer-events-none">
         {String(index + 1).padStart(2, "0")}
       </div>
     </a>

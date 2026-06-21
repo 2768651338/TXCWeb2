@@ -161,7 +161,9 @@ export default function Timeline() {
                       isLeft ? "lg:pr-12 lg:text-right" : "lg:pl-12"
                     }`}
                   >
-                    <div className="group p-6 lg:p-8 border border-bone-50/10 hover:border-acid/40 bg-ink-950/50 backdrop-blur-sm transition-colors duration-500">
+                    <div className="group relative p-6 lg:p-8 border border-bone-50/10 hover:border-acid/40 bg-ink-950/50 hover:bg-ink-950/80 backdrop-blur-sm transition-all duration-500 hover:-translate-y-1">
+                      {/* hover 角标 */}
+                      <div className="absolute top-0 left-0 w-0 h-px bg-acid group-hover:w-full transition-all duration-500" />
                       <div
                         className={`flex items-center gap-3 mb-3 ${
                           isLeft ? "lg:justify-end" : ""
@@ -172,7 +174,7 @@ export default function Timeline() {
                         </span>
                         <span className="w-8 h-px bg-acid/40" />
                       </div>
-                      <h3 className="font-display text-2xl lg:text-3xl font-medium text-bone-50 mb-1">
+                      <h3 className="font-display text-2xl lg:text-3xl font-medium text-bone-50 mb-1 group-hover:text-acid transition-colors duration-300">
                         {e.role}
                       </h3>
                       <div className="text-sm font-mono text-ash mb-4">
@@ -186,7 +188,7 @@ export default function Timeline() {
                           isLeft ? "lg:flex-row-reverse" : ""
                         }`}
                       >
-                        <span className="w-1 h-1 bg-acid rounded-full" />
+                        <span className="w-1 h-1 bg-acid rounded-full group-hover:scale-150 transition-transform duration-300" />
                         {e.highlight}
                       </div>
                     </div>
