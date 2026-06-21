@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { skillRadar, skillList } from "@/data/profile";
+import SectionWatermark from "@/components/SectionWatermark";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -12,6 +13,7 @@ gsap.registerPlugin(ScrollTrigger);
 function RadarChart() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const progressRef = useRef(0);
+  const hoverRef = useRef<number>(-1);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -34,7 +36,7 @@ function RadarChart() {
     const sides = skillRadar.length;
     const angleStep = (Math.PI * 2) / sides;
 
-    const draw = (progress: number) => {
+    const draw = (progress: number, hover: number) => {
       ctx.clearRect(0, 0, size, size);
 
       // 背景网格(5 层)
@@ -54,14 +56,15 @@ function RadarChart() {
         ctx.stroke();
       }
 
-      // 轴线
+      // 轴线 — hover 时高亮当前轴
       for (let i = 0; i < sides; i++) {
         const angle = -Math.PI / 2 + i * angleStep;
         ctx.beginPath();
         ctx.moveTo(cx, cy);
         ctx.lineTo(cx + radius * Math.cos(angle), cy + radius * Math.sin(angle));
-        ctx.strokeStyle = "rgba(245, 245, 240, 0.08)";
-        ctx.lineWidth = 1;
+        ctx.strokeStyle =
+          hover === i ? "rgba(212, 255, 58, 0.4)" : "rgba(245, 245, 240, 0.08)";
+        ctx.lineWidth = hover === i ? 1.5 : 1;
         ctx.stroke();
       }
 
@@ -89,26 +92,33 @@ function RadarChart() {
       ctx.lineWidth = 1.5;
       ctx.stroke();
 
-      // 数据点
+      // 数据点 — hover 时放大并加光晕
       for (let i = 0; i < sides; i++) {
         const angle = -Math.PI / 2 + i * angleStep;
         const value = (skillRadar[i].level / 100) * progress;
         const r = radius * value;
         const x = cx + r * Math.cos(angle);
         const y = cy + r * Math.sin(angle);
+        const isHover = hover === i;
+        // 光晕
+        if (isHover) {
+          ctx.beginPath();
+          ctx.arc(x, y, 16, 0, Math.PI * 2);
+          ctx.fillStyle = "rgba(212, 255, 58, 0.15)";
+          ctx.fill();
+        }
         ctx.beginPath();
-        ctx.arc(x, y, 4, 0, Math.PI * 2);
+        ctx.arc(x, y, isHover ? 6 : 4, 0, Math.PI * 2);
         ctx.fillStyle = "#d4ff3a";
         ctx.fill();
         ctx.beginPath();
-        ctx.arc(x, y, 8, 0, Math.PI * 2);
+        ctx.arc(x, y, isHover ? 12 : 8, 0, Math.PI * 2);
         ctx.strokeStyle = "rgba(212, 255, 58, 0.3)";
         ctx.lineWidth = 1;
         ctx.stroke();
       }
 
-      // 标签
-      ctx.font = "500 12px 'JetBrains Mono', monospace";
+      // 标签 — hover 时高亮
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
       for (let i = 0; i < sides; i++) {
@@ -116,7 +126,9 @@ function RadarChart() {
         const labelR = radius + 28;
         const x = cx + labelR * Math.cos(angle);
         const y = cy + labelR * Math.sin(angle);
-        ctx.fillStyle = "rgba(245, 245, 240, 0.7)";
+        const isHover = hover === i;
+        ctx.font = `${isHover ? "600" : "500"} ${isHover ? "13" : "12"}px 'JetBrains Mono', monospace`;
+        ctx.fillStyle = isHover ? "#d4ff3a" : "rgba(245, 245, 240, 0.7)";
         ctx.fillText(skillRadar[i].label, x, y);
         // 数值
         ctx.fillStyle = "#d4ff3a";
@@ -126,11 +138,10 @@ function RadarChart() {
           x,
           y + 14
         );
-        ctx.font = "500 12px 'JetBrains Mono', monospace";
       }
     };
 
-    draw(0);
+    draw(0, -1);
 
     // 滚动触发动画
     const obj = { v: 0 };
@@ -144,14 +155,48 @@ function RadarChart() {
           ease: "power3.out",
           onUpdate: () => {
             progressRef.current = obj.v;
-            draw(obj.v);
+            draw(obj.v, hoverRef.current);
           },
         });
       },
     });
 
+    // 鼠标 hover 检测最近顶点
+    const onMove = (e: MouseEvent) => {
+      const rect = canvas.getBoundingClientRect();
+      const mx = e.clientX - rect.left;
+      const my = e.clientY - rect.top;
+      let nearest = -1;
+      let minDist = 40; // 检测半径
+      for (let i = 0; i < sides; i++) {
+        const angle = -Math.PI / 2 + i * angleStep;
+        const value = (skillRadar[i].level / 100) * progressRef.current;
+        const r = radius * value;
+        const x = cx + r * Math.cos(angle);
+        const y = cy + r * Math.sin(angle);
+        const dist = Math.hypot(mx - x, my - y);
+        if (dist < minDist) {
+          minDist = dist;
+          nearest = i;
+        }
+      }
+      if (nearest !== hoverRef.current) {
+        hoverRef.current = nearest;
+        draw(progressRef.current, nearest);
+        canvas.style.cursor = nearest >= 0 ? "pointer" : "default";
+      }
+    };
+    const onLeave = () => {
+      hoverRef.current = -1;
+      draw(progressRef.current, -1);
+    };
+    canvas.addEventListener("mousemove", onMove);
+    canvas.addEventListener("mouseleave", onLeave);
+
     return () => {
       st.kill();
+      canvas.removeEventListener("mousemove", onMove);
+      canvas.removeEventListener("mouseleave", onLeave);
     };
   }, []);
 
@@ -242,6 +287,7 @@ export default function Skills() {
       id="skills"
       className="relative py-24 lg:py-40 bg-ink-900 bg-noise overflow-hidden"
     >
+      <SectionWatermark num="03" className="top-10 right-4 lg:right-10" />
       {/* 背景装饰 */}
       <div className="absolute inset-0 bg-grid opacity-50 pointer-events-none" />
 
@@ -257,6 +303,7 @@ export default function Skills() {
 
         <h2
           data-skills-title
+          data-parallax
           className="font-display text-display font-medium leading-tight tracking-tight mb-16 lg:mb-24 max-w-3xl"
         >
           能力不是数字,而是

@@ -4,6 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowUpRight } from "lucide-react";
 import { works } from "@/data/profile";
 import { useIsTouch } from "@/hooks/useDeviceTier";
+import SectionWatermark from "@/components/SectionWatermark";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -161,7 +162,8 @@ export default function Works() {
       id="works"
       className="relative py-24 lg:py-40 bg-ink-950 bg-noise overflow-hidden"
     >
-      <div className="container">
+      <SectionWatermark num="04" className="top-10 right-4 lg:right-10" />
+      <div className="container relative">
         {/* 章节标号 */}
         <div className="flex items-center gap-4 mb-12 lg:mb-20">
           <span className="text-xs font-mono text-acid">04</span>
@@ -174,6 +176,7 @@ export default function Works() {
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-16 lg:mb-24">
           <h2
             data-works-title
+            data-parallax
             className="font-display text-display font-medium leading-tight tracking-tight max-w-3xl"
           >
             每个作品都是一次

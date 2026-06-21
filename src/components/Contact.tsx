@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { profile, socialLinks } from "@/data/profile";
 import { useMagnetic } from "@/hooks/useMagnetic";
+import SectionWatermark from "@/components/SectionWatermark";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -170,6 +171,7 @@ export default function Contact() {
       className="relative py-24 lg:py-40 bg-ink-950 overflow-hidden"
     >
       <FlowCanvas />
+      <SectionWatermark num="06" className="top-10 right-4 lg:right-10" />
 
       {/* 顶部渐变 */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-acid/40 to-transparent" />
@@ -187,6 +189,7 @@ export default function Contact() {
         <div className="max-w-5xl">
           <h2
             data-contact-title
+            data-parallax
             className="font-display text-hero font-medium leading-none tracking-tightest mb-8"
           >
             让我们
@@ -239,15 +242,22 @@ export default function Contact() {
                     href={s.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group inline-flex items-center gap-3 px-5 py-3 border border-bone-50/15 hover:border-acid hover:bg-acid hover:text-ink-950 transition-all duration-300"
+                    data-cursor-hover
+                    className="group relative inline-flex items-center gap-3 pl-5 pr-4 py-3 border border-bone-50/15 hover:border-acid overflow-hidden"
                   >
-                    <Icon size={18} />
-                    <span className="text-xs font-mono uppercase tracking-wider">
+                    {/* hover 填充 */}
+                    <span className="absolute inset-0 bg-acid origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-sharp" />
+                    <Icon size={18} className="relative z-10 group-hover:text-ink-950 transition-colors duration-300" />
+                    <span className="relative z-10 text-xs font-mono uppercase tracking-wider group-hover:text-ink-950 transition-colors duration-300">
                       {s.platform}
                     </span>
-                    <span className="text-xs font-mono opacity-50 group-hover:opacity-100">
+                    <span className="relative z-10 text-xs font-mono text-ash group-hover:text-ink-950/70 transition-colors duration-300">
                       {s.handle}
                     </span>
+                    <ArrowUpRight
+                      size={14}
+                      className="relative z-10 -ml-1 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 group-hover:text-ink-950 transition-all duration-300"
+                    />
                   </a>
                 );
               })}
@@ -286,13 +296,20 @@ export default function Contact() {
       <footer className="container relative mt-24 lg:mt-32 pt-8 border-t border-bone-50/10">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs font-mono text-ash">
           <div className="flex items-center gap-3">
-            <span className="w-2 h-2 bg-acid rounded-full" />
+            <span className="w-2 h-2 bg-acid rounded-full animate-pulse" />
             <span>© 2025 {profile.name} · {profile.nameEn}</span>
           </div>
           <div className="flex items-center gap-4">
-            <span>Built with React · Three.js · GSAP</span>
-            <span className="text-bone-50/30">|</span>
-            <span>v1.0.0</span>
+            <span className="hidden sm:inline">Built with React · Three.js · GSAP</span>
+            <span className="hidden sm:inline text-bone-50/30">|</span>
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              data-cursor-hover
+              className="group inline-flex items-center gap-2 hover:text-acid transition-colors duration-300"
+            >
+              <span>回到顶部</span>
+              <span className="inline-block group-hover:-translate-y-1 transition-transform duration-300">↑</span>
+            </button>
           </div>
         </div>
       </footer>

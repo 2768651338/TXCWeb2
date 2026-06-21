@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { experiences } from "@/data/profile";
+import SectionWatermark from "@/components/SectionWatermark";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -102,7 +103,8 @@ export default function Timeline() {
       id="timeline"
       className="relative py-24 lg:py-40 bg-ink-900 bg-noise overflow-hidden"
     >
-      <div className="container">
+      <SectionWatermark num="05" className="top-10 right-4 lg:right-10" />
+      <div className="container relative">
         {/* 章节标号 */}
         <div className="flex items-center gap-4 mb-12 lg:mb-20">
           <span className="text-xs font-mono text-acid">05</span>
@@ -114,7 +116,8 @@ export default function Timeline() {
 
         <h2
           data-timeline-title
-          className="font-display text-display font-500 leading-tight tracking-tight mb-16 lg:mb-24 max-w-3xl"
+          data-parallax
+          className="font-display text-display font-medium leading-tight tracking-tight mb-16 lg:mb-24 max-w-3xl"
         >
           一条<span className="italic text-acid"> 持续生长</span>的轨迹。
         </h2>

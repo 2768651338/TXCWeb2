@@ -53,16 +53,16 @@ export interface SocialLink {
 }
 
 export const profile: Profile = {
-  name: "林深",
-  nameEn: "Lin Shen",
+  name: "田小橙",
+  nameEn: "Tian Xiaocheng",
   title: "全栈工程师 / 创意开发者",
   titleEn: "Engineer × Creative Developer",
   bio: "在代码与设计的交叉地带工作,用工程思维实现审美表达。",
   bioLong:
     "六年全栈开发经验,专注于交互式 Web 体验、数据可视化与创意编程。相信好的产品诞生于工程严谨性与审美敏感性的对话之中。曾主导多个百万级用户产品的前端架构,作品获 Awwwards SOTD 与 FWA 提名。",
   avatar:
-    "https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Portrait%20of%20an%20Asian%20male%20developer%2C%20dark%20background%2C%20cinematic%20lighting%2C%20minimal%20style%2C%20high%20contrast%2C%20professional%20headshot&image_size=portrait_4_3",
-  email: "linshen@studio.dev",
+    "https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Portrait%20of%20a%20creative%20developer%2C%20warm%20cinematic%20lighting%2C%20dark%20background%2C%20minimal%20style%2C%20high%20contrast%2C%20professional%20headshot%2C%20subtle%20orange%20accent&image_size=portrait_4_3",
+  email: "tianxc@studio.dev",
   location: "上海 · Shanghai",
   available: true,
 };
@@ -199,10 +199,10 @@ export const experiences: Experience[] = [
 ];
 
 export const socialLinks: SocialLink[] = [
-  { platform: "GitHub", url: "https://github.com", icon: "Github", handle: "@linshen" },
-  { platform: "Twitter", url: "https://twitter.com", icon: "Twitter", handle: "@linshen_dev" },
-  { platform: "Dribbble", url: "https://dribbble.com", icon: "Dribbble", handle: "@linshen" },
-  { platform: "LinkedIn", url: "https://linkedin.com", icon: "Linkedin", handle: "in/linshen" },
+  { platform: "GitHub", url: "https://github.com", icon: "Github", handle: "@tianxc" },
+  { platform: "Twitter", url: "https://twitter.com", icon: "Twitter", handle: "@tianxc_dev" },
+  { platform: "Dribbble", url: "https://dribbble.com", icon: "Dribbble", handle: "@tianxc" },
+  { platform: "LinkedIn", url: "https://linkedin.com", icon: "Linkedin", handle: "in/tianxc" },
 ];
 
 export const navSections = [

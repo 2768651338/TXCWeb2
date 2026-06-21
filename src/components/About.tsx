@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { profile } from "@/data/profile";
+import SectionWatermark from "@/components/SectionWatermark";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -126,7 +127,8 @@ export default function About() {
       id="about"
       className="relative py-24 lg:py-40 bg-ink-950 bg-noise overflow-hidden"
     >
-      <div className="container">
+      <SectionWatermark num="02" className="top-10 right-4 lg:right-10" />
+      <div className="container relative">
         {/* 章节标号 */}
         <div className="flex items-center gap-4 mb-12 lg:mb-20">
           <span className="text-xs font-mono text-acid">02</span>
@@ -179,6 +181,7 @@ export default function About() {
           <div className="lg:col-span-7" data-about-text>
             <h2
               data-about-title
+              data-parallax
               className="font-display text-display font-medium leading-tight tracking-tight mb-8"
             >
               在代码与设计的
