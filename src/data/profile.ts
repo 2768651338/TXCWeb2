@@ -46,6 +46,14 @@ export interface Experience {
   highlight: string;
 }
 
+export interface FilingInfo {
+  icp: string; // ICP备案号
+  icpUrl: string;
+  police: string; // 公网安备号
+  policeCode: string; // 公网安备编号(用于链接)
+  policeUrl: string;
+}
+
 export interface SocialLink {
   platform: string;
   url: string;
@@ -210,6 +218,15 @@ export const socialLinks: SocialLink[] = [
   { platform: "云商店", url: "https://shop.txc666.cn/", icon: "ShoppingBag", handle: "shop.txc666.cn" },
   { platform: "云枢校园", url: "https://www.yuncampus.cn/", icon: "GraduationCap", handle: "yuncampus.cn" },
 ];
+
+// 备案信息 — 请替换为真实备案号
+export const filing: FilingInfo = {
+  icp: "蜀ICP备2025123456号-1",
+  icpUrl: "https://beian.miit.gov.cn/",
+  police: "川公网安备 51019002003123号",
+  policeCode: "51019002003123",
+  policeUrl: "http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=51019002003123",
+};
 
 export const navSections = [
   { id: "hero", label: "首页", index: "01" },

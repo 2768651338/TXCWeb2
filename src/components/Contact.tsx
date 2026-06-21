@@ -11,7 +11,7 @@ import {
   ArrowUpRight,
   type LucideIcon,
 } from "lucide-react";
-import { profile, socialLinks } from "@/data/profile";
+import { profile, socialLinks, filing } from "@/data/profile";
 import { useMagnetic } from "@/hooks/useMagnetic";
 import SectionWatermark from "@/components/SectionWatermark";
 
@@ -326,6 +326,34 @@ export default function Contact() {
             <span className="hidden md:inline text-bone-50/20">·</span>
             <span>v1.0.0</span>
           </div>
+        </div>
+
+        {/* 备案信息 */}
+        <div className="mt-6 pt-4 border-t border-bone-50/5 flex flex-col sm:flex-row items-center justify-center gap-4 text-[10px] font-mono text-bone-50/25">
+          <a
+            href={filing.icpUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-cursor-hover
+            className="hover:text-acid/70 transition-colors duration-300"
+          >
+            {filing.icp}
+          </a>
+          <span className="hidden sm:inline text-bone-50/15">·</span>
+          <a
+            href={filing.policeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-cursor-hover
+            className="inline-flex items-center gap-1.5 hover:text-acid/70 transition-colors duration-300"
+          >
+            {/* 公网安备图标 */}
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0">
+              <path d="M8 1L2 3v5c0 3.5 2.5 6.5 6 7.5 3.5-1 6-4 6-7.5V3L8 1z" fill="currentColor" fillOpacity="0.3" stroke="currentColor" strokeWidth="0.8" strokeLinejoin="round"/>
+              <path d="M5.5 8L7 9.5L10.5 6" stroke="currentColor" strokeWidth="0.8" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+            {filing.police}
+          </a>
         </div>
       </footer>
     </section>
