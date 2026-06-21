@@ -6,7 +6,7 @@ import SectionWatermark from "@/components/SectionWatermark";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const tags = ["React", "Three.js", "WebGL", "GSAP", "TypeScript", "Node.js", "创意编程", "数据可视化"];
+const tags = ["PHP", "HTML5", "CSS3", "JavaScript", "Java", "C", "独立开发", "全栈"];
 
 export default function About() {
   const root = useRef<HTMLElement>(null);
@@ -71,7 +71,7 @@ export default function About() {
       );
 
       // 关键数据计数动画
-      const stats = [6, 40, 5];
+      const stats = [7, 6, 8];
       stats.forEach((target, i) => {
         const obj = { v: 0 };
         gsap.to(obj, {
@@ -184,9 +184,9 @@ export default function About() {
               data-parallax
               className="font-display text-display font-medium leading-tight tracking-tight mb-8"
             >
-              在代码与设计的
+              一个人,也能构建
               <br />
-              <span className="italic text-acid">交叉地带</span>工作。
+              <span className="italic text-acid">完整的数字生态</span>。
             </h2>
 
             <div className="space-y-4 text-base lg:text-lg text-bone-100 leading-relaxed max-w-2xl">
@@ -194,7 +194,7 @@ export default function About() {
                 {profile.bioLong}
               </p>
               <p data-about-line className="reveal text-ash">
-                相信好的产品诞生于工程严谨性与审美敏感性的对话之中。专注于交互式 Web 体验、数据可视化与创意编程,持续探索技术的表达边界。
+                {profile.slogan} — 这不仅是一句口号,更是每一行代码背后的信念。从第一个 HTML 页面到 7 个线上站点,始终相信独立开发的力量。
               </p>
             </div>
 
@@ -214,9 +214,9 @@ export default function About() {
             {/* 关键数据 */}
             <div className="mt-12 grid grid-cols-3 gap-6 pt-8 border-t border-bone-50/10">
               {[
-                { v: 6, suffix: "+", l: "年经验" },
-                { v: 40, suffix: "+", l: "项目交付" },
-                { v: 5, suffix: "", l: "国际奖项" },
+                { v: 7, suffix: "", l: "线上站点" },
+                { v: 6, suffix: "+", l: "技术栈" },
+                { v: 8, suffix: "+", l: "年经验" },
               ].map((s, i) => (
                 <div key={i} data-about-line className="reveal group/stat">
                   <div className="font-display text-3xl lg:text-4xl font-semibold text-acid">

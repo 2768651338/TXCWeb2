@@ -306,8 +306,8 @@ export default function Skills() {
           data-parallax
           className="font-display text-display font-medium leading-tight tracking-tight mb-16 lg:mb-24 max-w-3xl"
         >
-          能力不是数字,而是
-          <span className="italic text-acid"> 结构</span>。
+          技术是工具,独立是
+          <span className="italic text-acid"> 态度</span>。
         </h2>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">

@@ -149,6 +149,11 @@ export default function Hero() {
             >
               {profile.bio}
             </p>
+            {/* slogan 装饰 */}
+            <div data-hero-desc className="mt-3 flex items-center gap-2 text-xs font-mono text-acid/80">
+              <span className="w-4 h-px bg-acid/60" />
+              <span className="uppercase tracking-widest">{profile.slogan}</span>
+            </div>
           </div>
 
           <div data-hero-cta className="lg:col-span-5 lg:flex lg:justify-end">

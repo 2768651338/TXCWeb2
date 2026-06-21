@@ -119,7 +119,7 @@ export default function Timeline() {
           data-parallax
           className="font-display text-display font-medium leading-tight tracking-tight mb-16 lg:mb-24 max-w-3xl"
         >
-          一条<span className="italic text-acid"> 持续生长</span>的轨迹。
+          一条从<span className="italic text-acid"> 起步到独立</span>的轨迹。
         </h2>
 
         {/* 时间线 */}

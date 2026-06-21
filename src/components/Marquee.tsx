@@ -6,15 +6,15 @@ import { profile } from "@/data/profile";
  */
 export default function Marquee() {
   const items = [
-    "Creative Developer",
+    "独立开发者",
     "★",
-    "Three.js × WebGL",
+    "PHP × Java",
     "★",
-    "Interaction Design",
+    "全栈工程",
     "★",
-    "Data Visualization",
+    "7 个线上站点",
     "★",
-    `${profile.nameEn.toUpperCase()}`,
+    profile.slogan,
     "★",
   ];
   // 重复两遍以实现无缝循环

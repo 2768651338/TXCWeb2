@@ -179,11 +179,11 @@ export default function Works() {
             data-parallax
             className="font-display text-display font-medium leading-tight tracking-tight max-w-3xl"
           >
-            每个作品都是一次
-            <span className="italic text-acid"> 系统性回答</span>。
+            每个站点都是一次
+            <span className="italic text-acid"> 独立宣言</span>。
           </h2>
           <p className="text-sm text-ash max-w-xs">
-            从需求拆解到架构落地,从交互细节到性能调优 — 完整闭环。
+            从博客到支付,从教育到电商 — 一个人构建的数字版图。
           </p>
         </div>
 

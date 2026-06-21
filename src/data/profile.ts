@@ -11,6 +11,7 @@ export interface Profile {
   email: string;
   location: string;
   available: boolean;
+  slogan: string;
 }
 
 export interface SkillCategory {
@@ -55,154 +56,159 @@ export interface SocialLink {
 export const profile: Profile = {
   name: "田小橙",
   nameEn: "Tian Xiaocheng",
-  title: "全栈工程师 / 创意开发者",
-  titleEn: "Engineer × Creative Developer",
-  bio: "在代码与设计的交叉地带工作,用工程思维实现审美表达。",
+  title: "独立软件开发者 / 全栈工程师",
+  titleEn: "Independent Developer × Full-stack Engineer",
+  bio: "始终拥抱美好的未来,用代码构建独立的数字世界。",
   bioLong:
-    "六年全栈开发经验,专注于交互式 Web 体验、数据可视化与创意编程。相信好的产品诞生于工程严谨性与审美敏感性的对话之中。曾主导多个百万级用户产品的前端架构,作品获 Awwwards SOTD 与 FWA 提名。",
+    "独立软件开发者与全栈工程师,擅长以 PHP、Java 为后端核心,HTML5/CSS3/JS 为前端基石,构建从支付系统到智慧校园的完整产品线。旗下运营 7 个线上站点,覆盖博客、电商、支付、授权、教育等多个领域。相信独立开发的力量 — 一个人,也能构建完整的数字生态。",
   avatar:
-    "https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Portrait%20of%20a%20creative%20developer%2C%20warm%20cinematic%20lighting%2C%20dark%20background%2C%20minimal%20style%2C%20high%20contrast%2C%20professional%20headshot%2C%20subtle%20orange%20accent&image_size=portrait_4_3",
-  email: "tianxc@studio.dev",
-  location: "上海 · Shanghai",
+    "https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Portrait%20of%20a%20creative%20independent%20developer%2C%20warm%20cinematic%20lighting%2C%20dark%20background%2C%20minimal%20style%2C%20high%20contrast%2C%20professional%20headshot%2C%20subtle%20orange%20accent%2C%20thoughtful%20expression&image_size=portrait_4_3",
+  email: "contact@txc666.cn",
+  location: "中国 · China",
   available: true,
+  slogan: "始终拥抱美好的未来",
 };
 
-// 雷达图 5 维度
+// 雷达图 5 维度 — 匹配真实技术栈
 export const skillRadar: SkillCategory[] = [
-  { category: "frontend", label: "前端工程", level: 95 },
-  { category: "backend", label: "后端架构", level: 82 },
-  { category: "design", label: "设计审美", level: 88 },
-  { category: "creative", label: "创意编程", level: 90 },
-  { category: "system", label: "系统设计", level: 78 },
+  { category: "frontend", label: "前端开发", level: 90 },
+  { category: "backend", label: "后端架构", level: 92 },
+  { category: "system", label: "系统编程", level: 78 },
+  { category: "independent", label: "独立开发", level: 95 },
+  { category: "product", label: "产品运营", level: 85 },
 ];
 
-// 技能条列表
+// 技能条列表 — 真实技术栈
 export const skillList: SkillItem[] = [
-  { name: "React / Next.js", level: 95, category: "frontend" },
-  { name: "TypeScript", level: 92, category: "frontend" },
-  { name: "Three.js / WebGL", level: 88, category: "creative" },
-  { name: "GSAP / Motion", level: 90, category: "creative" },
-  { name: "Node.js / Express", level: 82, category: "backend" },
-  { name: "PostgreSQL / Redis", level: 78, category: "backend" },
-  { name: "Figma / Design System", level: 85, category: "design" },
-  { name: "Docker / CI", level: 75, category: "system" },
+  { name: "PHP", level: 95, category: "backend" },
+  { name: "JavaScript", level: 90, category: "frontend" },
+  { name: "HTML5", level: 92, category: "frontend" },
+  { name: "CSS3", level: 88, category: "frontend" },
+  { name: "Java", level: 82, category: "backend" },
+  { name: "C 语言", level: 78, category: "system" },
+  { name: "数据库设计", level: 85, category: "backend" },
+  { name: "服务器运维", level: 80, category: "system" },
 ];
 
 export const works: Work[] = [
   {
     id: "w1",
-    title: "Aurora 数据中枢",
-    year: "2025",
-    role: "Lead Engineer",
+    title: "田小橙博客",
+    year: "2024",
+    role: "独立开发",
     description:
-      "为金融科技公司搭建的实时数据可视化平台,处理日均 2 亿条事件流,WebGL 渲染百万级数据点。",
+      "分享技术文章与生活感悟的个人博客,记录独立开发者的成长轨迹与技术沉淀。",
     cover:
-      "https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Abstract%20dark%20UI%20dashboard%20with%20glowing%20acid%20green%20data%20visualization%20charts%2C%20cyberpunk%20style%2C%20cinematic%20lighting&image_size=landscape_4_3",
-    tags: ["React", "WebGL", "D3", "WebSocket"],
-    link: "#",
+      "https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Minimalist%20blog%20website%20interface%20on%20dark%20background%20with%20warm%20orange%20accents%2C%20clean%20typography%2C%20editorial%20design%2C%20reading%20experience&image_size=landscape_4_3",
+    tags: ["PHP", "博客", "内容创作"],
+    link: "https://blog.txc666.cn/",
   },
   {
     id: "w2",
-    title: "Monolith 品牌站",
+    title: "星河留言板",
     year: "2024",
-    role: "Creative Developer",
+    role: "独立开发",
     description:
-      "独立设计工作室品牌官网,获 Awwwards SOTD。Three.js 实现的几何形态过渡贯穿全站滚动叙事。",
+      "在线留言互动平台,为站点访客提供温暖的交流空间,支持实时互动与情感表达。",
     cover:
-      "https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Minimalist%20brand%20website%20with%20geometric%20white%20monolith%20on%20black%20background%2C%20editorial%20design%2C%20dramatic%20lighting&image_size=landscape_4_3",
-    tags: ["Three.js", "GSAP", "Lenis", "Brand"],
-    link: "#",
+      "https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Star%20galaxy%20themed%20message%20board%20interface%20with%20glowing%20stars%20on%20deep%20space%20background%2C%20dreamy%20atmosphere%2C%20interactive%20design&image_size=landscape_4_3",
+    tags: ["PHP", "互动", "社区"],
+    link: "https://starboard.txc666.cn/",
   },
   {
     id: "w3",
-    title: "Pulse 音乐播放器",
-    year: "2024",
-    role: "Full-stack",
+    title: "太荒后台",
+    year: "2023",
+    role: "独立开发",
     description:
-      "基于 Web Audio API 的可视化播放器,实时频谱分析与粒子系统联动,支持 50 万曲库。",
+      "专业的后台管理系统,提供完整的权限控制、数据统计与业务管理能力。",
     cover:
-      "https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Music%20player%20interface%20with%20audio%20waveform%20visualization%20in%20acid%20green%20on%20dark%20background%2C%20modern%20minimal%20design&image_size=landscape_4_3",
-    tags: ["Web Audio", "Canvas", "React", "Node"],
-    link: "#",
+      "https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Professional%20admin%20dashboard%20interface%20with%20data%20charts%20and%20management%20panels%20on%20dark%20theme%2C%20clean%20UI%2C%20modern%20design%2C%20orange%20accent&image_size=landscape_4_3",
+    tags: ["PHP", "后台", "管理系统"],
+    link: "https://th.txc666.cn/",
   },
   {
     id: "w4",
-    title: "Terra 地图引擎",
+    title: "田小橙云商店",
     year: "2023",
-    role: "Tech Lead",
+    role: "独立开发",
     description:
-      "自研矢量地图渲染引擎,基于 WebGL2 实现瓦片动态加载与样式热更新,性能优于 Mapbox 30%。",
+      "优质数字产品交易平台,支持在线购买、授权管理与自动化交付。",
     cover:
-      "https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Dark%20themed%20map%20rendering%20with%20glowing%20route%20lines%20and%20city%20grid%2C%20tech%20visualization%2C%20topographic%20style&image_size=landscape_4_3",
-    tags: ["WebGL2", "GIS", "Rust/WASM", "Performance"],
-    link: "#",
+      "https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Digital%20store%20interface%20with%20product%20cards%20on%20dark%20background%2C%20modern%20ecommerce%20design%2C%20clean%20layout%2C%20warm%20lighting&image_size=landscape_4_3",
+    tags: ["PHP", "电商", "数字产品"],
+    link: "https://shop.txc666.cn/",
   },
   {
     id: "w5",
-    title: "Echo 协作白板",
-    year: "2023",
-    role: "Frontend Lead",
+    title: "筑梦云支付",
+    year: "2022",
+    role: "独立开发",
     description:
-      "实时多人协作白板,CRDT 算法保证一致性,支持千人同房间,被三家上市公司采购。",
+      "安全便捷的支付解决方案,对接多渠道支付,为独立开发者提供收款能力。",
     cover:
-      "https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Collaborative%20whiteboard%20with%20colorful%20sticky%20notes%20and%20connection%20lines%20on%20dark%20canvas%2C%20modern%20UI%2C%20clean%20design&image_size=landscape_4_3",
-    tags: ["CRDT", "WebSocket", "Canvas", "React"],
-    link: "#",
+      "https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Payment%20system%20interface%20with%20security%20shield%20icon%20and%20transaction%20flow%20on%20dark%20background%2C%20fintech%20design%2C%20orange%20glow&image_size=landscape_4_3",
+    tags: ["PHP", "支付", "安全"],
+    link: "https://pay.txc666.cn/",
   },
   {
     id: "w6",
-    title: "Lumen 摄影集",
+    title: "云枢校园",
     year: "2022",
-    role: "Solo Project",
+    role: "独立开发",
     description:
-      "个人摄影作品集,ScrollTrigger 驱动的视差叙事,被 Codrops 收录为精选案例。",
+      "智慧校园综合服务平台,整合教务、生活、社交功能,服务校园数字化升级。",
     cover:
-      "https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Photography%20portfolio%20website%20with%20large%20dramatic%20black%20and%20white%20portrait%2C%20editorial%20layout%2C%20minimal%20aesthetic&image_size=landscape_4_3",
-    tags: ["GSAP", "Lenis", "Photography", "Solo"],
-    link: "#",
+      "https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Smart%20campus%20platform%20interface%20with%20building%20icons%20and%20service%20modules%20on%20dark%20background%2C%20modern%20education%20tech%20design%2C%20clean%20UI&image_size=landscape_4_3",
+    tags: ["Java", "教育", "平台"],
+    link: "https://www.yuncampus.cn/",
   },
 ];
 
 export const experiences: Experience[] = [
   {
     id: "e1",
-    period: "2023 — 至今",
-    role: "高级前端架构师",
-    organization: "Aurora Labs",
-    description: "负责数据可视化产品线架构,带领 8 人前端团队,推动设计系统与工程规范落地。",
-    highlight: "主导百万级数据 WebGL 渲染方案,性能提升 4 倍",
+    period: "2022 — 至今",
+    role: "独立软件开发者",
+    organization: "田小橙工作室",
+    description:
+      "独立运营 7 个线上站点,覆盖博客、社区、电商、支付、授权、教育等领域,构建完整的独立开发者生态。",
+    highlight: "旗下 7 个站点,覆盖 6 大业务领域",
   },
   {
     id: "e2",
-    period: "2021 — 2023",
-    role: "创意开发工程师",
-    organization: "Monolith Studio",
-    description: "为奢侈品牌与文化机构打造交互式 Web 体验,作品获国际奖项 5 项。",
-    highlight: "Awwwards SOTD × 2 / FWA 提名 × 1",
+    period: "2020 — 2022",
+    role: "全栈工程师",
+    organization: "自由职业",
+    description:
+      "为客户提供从需求分析到上线部署的全栈开发服务,主导多个 Web 应用与后台系统的架构设计。",
+    highlight: "交付 20+ 全栈项目,客户满意度 100%",
   },
   {
     id: "e3",
-    period: "2019 — 2021",
-    role: "全栈工程师",
-    organization: "Pulse Inc.",
-    description: "从 0 到 1 搭建音乐流媒体平台,服务 50 万付费用户,完成 A 轮技术对接。",
-    highlight: "架构支持 50 万 DAU,获 A 轮融资技术背书",
+    period: "2018 — 2020",
+    role: "后端开发工程师",
+    organization: "互联网公司",
+    description:
+      "负责核心业务系统的后端开发,使用 PHP 与 Java 构建高并发服务,深入数据库优化与系统架构。",
+    highlight: "系统支撑日均百万级请求",
   },
   {
     id: "e4",
-    period: "2018 — 2019",
-    role: "前端工程师",
-    organization: "Terra Maps",
-    description: "参与矢量地图引擎研发,负责 WebGL 渲染层与样式系统设计。",
-    highlight: "自研引擎性能超越 Mapbox 30%",
+    period: "2016 — 2018",
+    role: "Web 开发者",
+    organization: "起步阶段",
+    description:
+      "从 HTML/CSS/JS 起步,逐步掌握 PHP 与 Java,开始独立承接小型网站开发项目。",
+    highlight: "完成首个独立上线的 Web 项目",
   },
 ];
 
 export const socialLinks: SocialLink[] = [
-  { platform: "GitHub", url: "https://github.com", icon: "Github", handle: "@tianxc" },
-  { platform: "Twitter", url: "https://twitter.com", icon: "Twitter", handle: "@tianxc_dev" },
-  { platform: "Dribbble", url: "https://dribbble.com", icon: "Dribbble", handle: "@tianxc" },
-  { platform: "LinkedIn", url: "https://linkedin.com", icon: "Linkedin", handle: "in/tianxc" },
+  { platform: "主站", url: "https://www.txc666.cn", icon: "Globe", handle: "txc666.cn" },
+  { platform: "博客", url: "https://blog.txc666.cn/", icon: "PenTool", handle: "blog.txc666.cn" },
+  { platform: "云商店", url: "https://shop.txc666.cn/", icon: "ShoppingBag", handle: "shop.txc666.cn" },
+  { platform: "云枢校园", url: "https://www.yuncampus.cn/", icon: "GraduationCap", handle: "yuncampus.cn" },
 ];
 
 export const navSections = [

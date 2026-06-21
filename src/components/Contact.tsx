@@ -2,10 +2,10 @@ import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
-  Github,
-  Twitter,
-  Dribbble,
-  Linkedin,
+  Globe,
+  PenTool,
+  ShoppingBag,
+  GraduationCap,
   Copy,
   Check,
   ArrowUpRight,
@@ -18,10 +18,10 @@ import SectionWatermark from "@/components/SectionWatermark";
 gsap.registerPlugin(ScrollTrigger);
 
 const iconMap: Record<string, LucideIcon> = {
-  Github,
-  Twitter,
-  Dribbble,
-  Linkedin,
+  Globe,
+  PenTool,
+  ShoppingBag,
+  GraduationCap,
 };
 
 /**
