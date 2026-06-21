@@ -241,6 +241,37 @@ export default function About() {
                 </div>
               ))}
             </div>
+
+            {/* 签名 */}
+            <div data-about-line className="reveal mt-10 flex items-center gap-4">
+              <svg
+                width="120"
+                height="40"
+                viewBox="0 0 120 40"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="text-acid"
+              >
+                <path
+                  d="M5 28 Q 15 10, 25 20 T 45 22 Q 55 15, 65 25 T 90 18 Q 100 12, 115 22"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  fill="none"
+                />
+                <path
+                  d="M30 32 L 85 32"
+                  stroke="currentColor"
+                  strokeWidth="0.8"
+                  strokeOpacity="0.4"
+                  strokeLinecap="round"
+                />
+              </svg>
+              <div className="text-[10px] font-mono text-ash uppercase tracking-widest">
+                <div>{profile.name}</div>
+                <div className="text-bone-50/40">{profile.nameEn}</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

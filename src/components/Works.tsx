@@ -186,17 +186,26 @@ export default function Works() {
         </div>
 
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-16 lg:mb-24">
-          <h2
-            data-works-title
-            data-parallax
-            className="font-display text-display font-medium leading-tight tracking-tight max-w-3xl"
-          >
-            每个站点都是一次
-            <span className="italic text-acid"> 独立宣言</span>。
-          </h2>
-          <p className="text-sm text-ash max-w-xs">
-            从博客到支付,从教育到电商 — 一个人构建的数字版图。
-          </p>
+          <div>
+            <h2
+              data-works-title
+              data-parallax
+              className="font-display text-display font-medium leading-tight tracking-tight max-w-3xl"
+            >
+              每个站点都是一次
+              <span className="italic text-acid"> 独立宣言</span>。
+            </h2>
+            <p className="text-sm text-ash max-w-xs mt-4">
+              从博客到支付,从教育到电商 — 一个人构建的数字版图。
+            </p>
+          </div>
+          {/* 计数器 */}
+          <div className="flex items-baseline gap-2 font-mono text-ash">
+            <span className="text-4xl lg:text-5xl font-display font-black text-acid">
+              {String(works.length).padStart(2, "0")}
+            </span>
+            <span className="text-sm">/ {String(works.length).padStart(2, "0")} 站点</span>
+          </div>
         </div>
 
         {/* 作品网格 */}

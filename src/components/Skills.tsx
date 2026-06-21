@@ -321,40 +321,54 @@ export default function Skills() {
             </div>
           </div>
 
-          {/* 技能条列表 */}
+          {/* 技能条列表 — 按分类分组 */}
           <div className="lg:col-span-7 order-1 lg:order-2" data-skills-list>
-            <div className="space-y-5">
-              {skillList.map((s, i) => (
-                <div key={s.name} data-skill-item className="group">
-                  <div className="flex items-baseline justify-between mb-2">
-                    <span className="text-sm lg:text-base font-mono text-bone-50 group-hover:text-acid transition-colors duration-300">
-                      {s.name}
-                    </span>
-                    <span className="text-xs font-mono text-ash">
-                      <span data-skill-num={i}>0</span>%
-                    </span>
-                  </div>
-                  <div className="h-px bg-bone-50/10 relative overflow-hidden">
-                    {/* 进度条 */}
-                    <div
-                      data-skill-bar={i}
-                      className="absolute inset-y-0 left-0 bg-acid"
-                      style={{ width: "0%" }}
-                    />
-                    {/* 末端光点 */}
-                    <div
-                      data-skill-dot={i}
-                      className="absolute top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-acid opacity-0 shadow-[0_0_8px_2px_rgba(212,255,58,0.6)]"
-                      style={{ left: "0%" }}
-                    />
-                    {/* 流光扫过 */}
-                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="absolute inset-y-0 w-1/3 bg-gradient-to-r from-transparent via-acid/40 to-transparent animate-marquee" />
-                    </div>
-                  </div>
+            {([
+              { key: "frontend", label: "前端 / Frontend" },
+              { key: "backend", label: "后端 / Backend" },
+              { key: "system", label: "系统 / System" },
+            ] as const).map((cat) => (
+              <div key={cat.key} className="mb-6 last:mb-0">
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="text-[10px] font-mono text-acid uppercase tracking-widest">
+                    {cat.label}
+                  </span>
+                  <span className="flex-1 h-px bg-bone-50/10" />
                 </div>
-              ))}
-            </div>
+                <div className="space-y-5">
+                  {skillList
+                    .map((s, i) => ({ s, i }))
+                    .filter(({ s }) => s.category === cat.key)
+                    .map(({ s, i }) => (
+                      <div key={s.name} data-skill-item className="group">
+                        <div className="flex items-baseline justify-between mb-2">
+                          <span className="text-sm lg:text-base font-mono text-bone-50 group-hover:text-acid transition-colors duration-300">
+                            {s.name}
+                          </span>
+                          <span className="text-xs font-mono text-ash">
+                            <span data-skill-num={i}>0</span>%
+                          </span>
+                        </div>
+                        <div className="h-px bg-bone-50/10 relative overflow-hidden">
+                          <div
+                            data-skill-bar={i}
+                            className="absolute inset-y-0 left-0 bg-acid"
+                            style={{ width: "0%" }}
+                          />
+                          <div
+                            data-skill-dot={i}
+                            className="absolute top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-acid opacity-0 shadow-[0_0_8px_2px_rgba(212,255,58,0.6)]"
+                            style={{ left: "0%" }}
+                          />
+                          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div className="absolute inset-y-0 w-1/3 bg-gradient-to-r from-transparent via-acid/40 to-transparent animate-marquee" />
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                </div>
+              </div>
+            ))}
 
             {/* 图例 */}
             <div className="mt-12 pt-8 border-t border-bone-50/10 flex flex-wrap gap-x-6 gap-y-2 text-xs font-mono text-ash">

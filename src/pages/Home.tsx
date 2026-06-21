@@ -13,6 +13,7 @@ import CustomCursor from "@/components/CustomCursor";
 import Marquee from "@/components/Marquee";
 import ScrollToTop from "@/components/ScrollToTop";
 import SectionIndicator from "@/components/SectionIndicator";
+import ScrollProgress from "@/components/ScrollProgress";
 import { useKeyboardNav } from "@/hooks/useKeyboardNav";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -45,6 +46,7 @@ export default function Home() {
     <div className="relative bg-ink-950">
       <PageLoader />
       <CustomCursor />
+      <ScrollProgress />
       {/* 页面级颗粒覆盖 */}
       <div className="page-grain" aria-hidden />
       {/* 无障碍:跳转到主内容 */}
