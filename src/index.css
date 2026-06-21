@@ -1,0 +1,201 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --bg: #0a0a0f;
+  --fg: #f5f5f0;
+  --ash: #8a8a85;
+  --acid: #d4ff3a;
+  --grid: rgba(245, 245, 240, 0.04);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-weight: 400;
+  line-height: 1.5;
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--acid);
+  color: var(--bg);
+}
+
+/* 自定义滚动条 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0f;
+}
+::-webkit-scrollbar-thumb {
+  background: #262633;
+  border-radius: 0;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #d4ff3a;
+}
+
+/* 网格背景 */
+.bg-grid {
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 80px 80px;
+}
+
+/* 噪点纹理 */
+.bg-noise {
+  position: relative;
+}
+.bg-noise::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.04;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* 文字描边 */
+.text-stroke {
+  -webkit-text-stroke: 1px var(--fg);
+  color: transparent;
+}
+.text-stroke-acid {
+  -webkit-text-stroke: 1px var(--acid);
+  color: transparent;
+}
+
+/* 入场动画初始态 */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+/* 链接 hover 下划线 */
+.link-underline {
+  position: relative;
+  display: inline-block;
+}
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.link-underline:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* 卡片 hover 倾斜容器 */
+.tilt-card {
+  transform-style: preserve-3d;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+/* 防止 reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* 桌面端隐藏原生光标,使用自定义光标 */
+@media (pointer: fine) and (min-width: 1024px) {
+  body {
+    cursor: none;
+  }
+  a,
+  button,
+  [data-cursor-hover] {
+    cursor: none;
+  }
+}
+
+/* 焦点可见态 — 键盘可访问性 */
+:focus-visible {
+  outline: 2px solid var(--acid);
+  outline-offset: 3px;
+}
+
+/* 按钮填充动画基础态 */
+.btn-fill {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+.btn-fill::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--acid);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: -1;
+}
+.btn-fill:hover::before {
+  transform: scaleY(1);
+}
+
+/* 章节标题装饰下划线 */
+.section-rule {
+  position: relative;
+}
+.section-rule::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 32px;
+  height: 2px;
+  background: var(--acid);
+}
+
+/* 文字渐变 */
+.text-gradient {
+  background: linear-gradient(135deg, #f5f5f0 0%, #8a8a85 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* 平滑字体渲染 */
+html,
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
