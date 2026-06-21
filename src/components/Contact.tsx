@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { profile, socialLinks, filing } from "@/data/profile";
 import { useMagnetic } from "@/hooks/useMagnetic";
+import { cn } from "@/lib/utils";
 import SectionWatermark from "@/components/SectionWatermark";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -216,16 +217,22 @@ export default function Contact() {
               className="group inline-flex items-center gap-3 lg:gap-4 font-display text-2xl lg:text-4xl font-medium text-bone-50 hover:text-acid transition-colors duration-300"
             >
               <span className="link-underline">{profile.email}</span>
-              <span className="inline-flex items-center justify-center w-8 h-8 border border-bone-50/20 group-hover:border-acid group-hover:bg-acid group-hover:text-ink-950 transition-all duration-300">
-                {copied ? <Check size={14} /> : <Copy size={14} />}
+              <span className={cn(
+                "inline-flex items-center justify-center w-8 h-8 border transition-all duration-300",
+                copied
+                  ? "border-acid bg-acid text-ink-950 scale-110"
+                  : "border-bone-50/20 group-hover:border-acid group-hover:bg-acid group-hover:text-ink-950"
+              )}>
+                {copied ? <Check size={14} className="animate-in" /> : <Copy size={14} />}
               </span>
             </button>
-            {copied && (
-              <div className="mt-3 text-xs font-mono text-acid flex items-center gap-2">
-                <span className="w-1 h-1 bg-acid rounded-full" />
-                已复制到剪贴板
-              </div>
-            )}
+            <div className={cn(
+              "mt-3 text-xs font-mono flex items-center gap-2 transition-all duration-300",
+              copied ? "text-acid opacity-100 translate-y-0" : "text-acid opacity-0 -translate-y-1 h-0"
+            )}>
+              <span className="w-1 h-1 bg-acid rounded-full animate-pulse" />
+              已复制到剪贴板 — 期待你的来信
+            </div>
           </div>
 
           {/* 社交链接 */}

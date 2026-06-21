@@ -380,6 +380,24 @@ export default function Skills() {
               </span>
               <span className="ml-auto">最后更新:2025.06</span>
             </div>
+
+            {/* 汇总统计 */}
+            <div className="mt-8 grid grid-cols-3 gap-4">
+              {[
+                { v: skillList.length, l: "技术栈" },
+                { v: Math.round(skillList.reduce((a, s) => a + s.level, 0) / skillList.length), suffix: "%", l: "平均熟练度" },
+                { v: skillRadar.reduce((a, s) => a + s.level, 0), l: "能力总分" },
+              ].map((s, i) => (
+                <div key={i} className="border border-bone-50/10 p-4">
+                  <div className="font-display text-2xl font-black text-acid">
+                    {s.v}{s.suffix || ""}
+                  </div>
+                  <div className="text-[10px] font-mono text-ash uppercase tracking-wider mt-1">
+                    {s.l}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

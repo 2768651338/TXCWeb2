@@ -191,11 +191,23 @@ export default function Hero() {
           </span>
           <span className="uppercase tracking-widest">Scroll</span>
         </button>
-        <div className="hidden sm:flex items-center gap-3 text-bone-50/40">
-          <span className="w-1 h-1 bg-acid rounded-full animate-pulse" />
-          <LiveClock />
+
+        {/* 当前正在 */}
+        <div className="hidden md:flex items-center gap-3 text-bone-50/40">
+          <span className="text-[10px] uppercase tracking-widest text-bone-50/30">Now</span>
+          <span className="w-8 h-px bg-bone-50/20" />
+          <span className="flex items-center gap-2">
+            <span className="w-1.5 h-1.5 bg-acid rounded-full animate-pulse" />
+            <span>构建独立开发者生态</span>
+          </span>
         </div>
-        <div className="font-mono">01 / 06</div>
+
+        <div className="flex items-center gap-4">
+          <div className="hidden sm:flex items-center gap-3 text-bone-50/40">
+            <LiveClock />
+          </div>
+          <div className="font-mono">01 / 06</div>
+        </div>
       </div>
     </section>
   );

@@ -24,6 +24,14 @@ export default function Timeline() {
             start: "top 70%",
             end: "bottom 80%",
             scrub: 0.5,
+            onUpdate: (self) => {
+              const idx = Math.min(
+                Math.floor(self.progress * experiences.length) + 1,
+                experiences.length
+              );
+              const el = root.current?.querySelector("[data-timeline-current]");
+              if (el) el.textContent = String(idx).padStart(2, "0");
+            },
           },
         }
       );
@@ -121,6 +129,12 @@ export default function Timeline() {
         >
           一条从<span className="italic text-acid"> 起步到独立</span>的轨迹。
         </h2>
+
+        {/* 进度计数器 */}
+        <div className="absolute top-0 right-0 hidden lg:flex items-baseline gap-2 font-mono text-ash">
+          <span data-timeline-current className="text-2xl font-display font-black text-acid">01</span>
+          <span className="text-sm">/ {String(experiences.length).padStart(2, "0")}</span>
+        </div>
 
         {/* 时间线 */}
         <div data-timeline className="relative">
