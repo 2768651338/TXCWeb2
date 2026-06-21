@@ -163,17 +163,28 @@ export default function About() {
                 <div className="absolute inset-0 bg-gradient-to-t from-ink-950 via-transparent to-transparent" />
 
                 {/* 角标 */}
-                <div className="absolute top-4 left-4 text-xs font-mono text-acid">
-                  ● {profile.available ? "AVAILABLE" : "BUSY"}
+                <div className="absolute top-4 left-4 flex items-center gap-2 text-xs font-mono text-acid">
+                  <span className="w-1.5 h-1.5 bg-acid rounded-full animate-pulse" />
+                  {profile.available ? "AVAILABLE" : "BUSY"}
                 </div>
                 <div className="absolute bottom-4 right-4 text-xs font-mono text-bone-50/60">
                   {profile.nameEn.toUpperCase()}
                 </div>
+
+                {/* 扫描线装饰 */}
+                <div className="absolute inset-x-0 top-1/2 h-px bg-acid/20 opacity-0 hover:opacity-100 transition-opacity duration-500" />
               </div>
 
-              {/* 装饰角标 */}
+              {/* 装饰角标 — 四角 */}
               <div className="absolute -top-3 -right-3 w-6 h-6 border-t border-r border-acid" />
               <div className="absolute -bottom-3 -left-3 w-6 h-6 border-b border-l border-acid" />
+              <div className="absolute -top-3 -left-3 w-3 h-3 border-t border-l border-acid/40" />
+              <div className="absolute -bottom-3 -right-3 w-3 h-3 border-b border-r border-acid/40" />
+
+              {/* 侧边竖排文字 */}
+              <div className="hidden lg:block absolute -left-8 top-1/2 -translate-y-1/2 text-[10px] font-mono text-bone-50/30 uppercase tracking-widest" style={{ writingMode: "vertical-rl" }}>
+                Portrait · 2025
+              </div>
             </div>
           </div>
 

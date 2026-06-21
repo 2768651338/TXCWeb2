@@ -110,6 +110,18 @@ function WorkCard({ work, index }: { work: typeof works[number]; index: number }
             </span>
           ))}
         </div>
+        {/* 访问链接 */}
+        <a
+          href={work.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          data-cursor-hover
+          className="mt-5 inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-bone-50/60 hover:text-acid transition-colors duration-300 group/link"
+        >
+          <span>访问站点</span>
+          <span className="w-6 h-px bg-current transition-all duration-300 group-hover/link:w-10" />
+          <ArrowUpRight size={12} className="transition-transform duration-300 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
+        </a>
       </div>
 
       {/* 编号 */}

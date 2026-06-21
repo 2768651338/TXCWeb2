@@ -312,6 +312,21 @@ export default function Contact() {
             </button>
           </div>
         </div>
+        {/* 底部细节行 */}
+        <div className="mt-4 pt-4 border-t border-bone-50/5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-[10px] font-mono text-bone-50/30 uppercase tracking-widest">
+          <div className="flex items-center gap-4">
+            <span>{profile.slogan}</span>
+          </div>
+          <div className="flex items-center gap-3">
+            <span className="hidden md:flex items-center gap-1.5">
+              <kbd className="px-1.5 py-0.5 border border-bone-50/20 text-bone-50/50">↑</kbd>
+              <kbd className="px-1.5 py-0.5 border border-bone-50/20 text-bone-50/50">↓</kbd>
+              <span>键盘导航</span>
+            </span>
+            <span className="hidden md:inline text-bone-50/20">·</span>
+            <span>v1.0.0</span>
+          </div>
+        </div>
       </footer>
     </section>
   );
